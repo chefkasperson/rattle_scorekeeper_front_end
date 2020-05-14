@@ -13,3 +13,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+form {
+  padding: 20px;
+  margin-top: 60px;
+}
+
+div.container.section {
+  padding: 20px;
+  margin-top: 32px;
+}
+
+h5.card-content {
+  padding: 10px;
+}
