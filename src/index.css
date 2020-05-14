@@ -27,3 +27,15 @@ div.container.section {
 h5.card-content {
   padding: 10px;
 }
+
+th {
+  text-align: center;
+}
+
+td {
+  text-align: center;
+}
+
+div.scoreboard {
+  padding: 20px;
+}

@@ -6,7 +6,7 @@ const Home = () => {
 
   return (
     <div className='container section'>
-      <h5 class='card-content white center z-depth-3'>Current Games</h5>
+      <h5 className='card-content white center z-depth-3'>Current Games</h5>
       <CurrentGames games={games} />
     </div>
   )
