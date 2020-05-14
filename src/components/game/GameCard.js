@@ -8,6 +8,7 @@ function GameCard({game}) {
         <span className="card-title">Player 2: {game.p2} -- {game.p2_score}</span>
         <span className="card-title">Player 3: {game.p3} -- {game.p3_score}</span>
         <span className="card-title">Dealer: {game.dealer}</span>
+        <button className="btn indigo">continue game</button>
       </div>
       
     </div>
