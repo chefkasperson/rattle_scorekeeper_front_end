@@ -14,14 +14,15 @@ export const postHand = (hand) => {
       body: JSON.stringify(body)
     })
     .then(r => r.json())
-    .then(newHand => {
-      if (newHand.error) {
-        console.log(newHand)
+    .then(game => {
+      if (game.error) {
+        console.log(game)
         alert("Sorry the data entered for this hand is invalid")
       } else {
-        console.log(newHand)
-        dispatch(addHand(newHand))
-        return newHand
+        let hand = game.hands[game.hands.length - 1]
+        console.log(game, hand)
+        dispatch(addHand(hand))
+        return game
       }
     })
   }
