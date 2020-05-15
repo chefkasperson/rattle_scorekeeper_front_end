@@ -1,3 +1,4 @@
+
 export const addGame = game => ({type: "ADD_GAME", game})
 
 export const createGame = (game) => {
@@ -20,6 +21,7 @@ export const createGame = (game) => {
       } else {
         console.log(newGame)
         dispatch(addGame(newGame))
+        return newGame
       }
     })
   }
