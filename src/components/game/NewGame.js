@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-
+import { createGame } from '../../store/actions/gameActions'
+import { connect } from 'react-redux'
 export class NewGame extends Component {
   state = {
-    player1: '',
-    player2: '',
-    player3: '',
+    player_1: '',
+    player_2: '',
+    player_3: '',
     dealer: '1',
     players: [{name: 'Norman', id: 3}, {name: 'Ted', id: 1}, {name: 'Hazel', id: 2}]
   }
@@ -15,8 +16,16 @@ export class NewGame extends Component {
     })
   }
   handleSubmit = (e) => {
+    let game = this.state
     e.preventDefault()
-    console.log(this.state)
+    console.log(game)
+    this.props.createGame(game, this.props.history)
+      .then(r => {
+        if (!r.error) {
+          this.resetForm()
+          this.props.history.push(`/games/${r.id}`)
+        }
+      })
   }
 
   render() {
@@ -29,21 +38,21 @@ export class NewGame extends Component {
           <div className="input-field">
             <select
             className='browser-default'
-            name='player1'
+            name='player_1'
             onChange={this.handleChange}
             ><option disabled selected value=''>choose player 1</option>{playersList}</select>
 
           </div>
           <div className="input-field">
             <select
-              name='player2'
+              name='player_2'
               className='browser-default'
               onChange={this.handleChange}
               ><option disabled selected value=''>choose player 2</option>{playersList}</select>
           </div>
           <div className="input-field">
           <select
-            name='player3'
+            name='player_3'
             className='browser-default'
             onChange={this.handleChange}
             ><option disabled selected value=''>choose player 3</option>{playersList}</select>
@@ -69,4 +78,4 @@ export class NewGame extends Component {
   }
 }
 
-export default NewGame
+export default connect(null, { createGame })(NewGame)
