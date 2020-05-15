@@ -27,8 +27,8 @@ export class NewHand extends Component {
       game_id: game_id
     }
     this.props.postHand(hand)
-    console.log(this.state)
-    console.log(this.props.match.params.id)
+    console.log(game_id, hand)
+    
   }
 
   render() {
