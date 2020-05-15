@@ -18,6 +18,7 @@ export const createGame = (game) => {
       if (newGame.error) {
         alert(newGame.error)
       } else {
+        console.log(newGame)
         dispatch(addGame(newGame))
       }
     })

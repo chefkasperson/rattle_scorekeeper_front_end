@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { createGame } from '../../store/actions/gameActions'
 import { connect } from 'react-redux'
+
 export class NewGame extends Component {
   state = {
     player_1: '',
     player_2: '',
     player_3: '',
     dealer: '1',
-    players: [{name: 'Norman', id: 3}, {name: 'Ted', id: 1}, {name: 'Hazel', id: 2}]
   }
 
   handleChange = (e) => {
@@ -20,16 +20,12 @@ export class NewGame extends Component {
     e.preventDefault()
     console.log(game)
     this.props.createGame(game, this.props.history)
-      .then(r => {
-        if (!r.error) {
-          this.resetForm()
-          this.props.history.push(`/games/${r.id}`)
-        }
-      })
+      .then(this.props.history.push(`/games/${game.id}`) )
   }
 
   render() {
-    let playersList = this.state.players.map(function(player){ 
+    console.log(this.props)
+    let playersList = this.props.players.map(function(player){ 
       return (<option key={player.id} value={player.name}>{player.name}</option>)})
     return (
       <div className='container white z-depth-3'>
@@ -77,5 +73,10 @@ export class NewGame extends Component {
     )
   }
 }
+const mapStateToProps = (state) => {
+  return {
+    players: state.playersReducer.players
+  }
+}
 
-export default connect(null, { createGame })(NewGame)
+export default connect(mapStateToProps, { createGame })(NewGame)

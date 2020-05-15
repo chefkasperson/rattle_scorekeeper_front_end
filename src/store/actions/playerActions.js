@@ -5,6 +5,7 @@ export const fetchPlayers = () => {
     return fetch("http://localhost:3003/api/v1/players")
       .then(r => r.json())
       .then(playerJSON => {
+        console.log(playerJSON)
         if (playerJSON.error) {
           alert(playerJSON.error)
         } else {
