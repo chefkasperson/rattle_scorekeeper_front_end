@@ -18,7 +18,6 @@ export class NewGame extends Component {
   handleSubmit = (e) => {
     let game = this.state
     e.preventDefault()
-    console.log(game)
     this.props.createGame(game, this.props.history)
       .then(r => {
         console.log(r)

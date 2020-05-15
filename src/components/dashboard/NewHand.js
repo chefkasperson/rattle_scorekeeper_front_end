@@ -1,4 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { postHand } from '../../store/actions/handActions'
+import { withRouter } from 'react-router-dom'
 
 export class NewHand extends Component {
   state = {
@@ -8,7 +11,6 @@ export class NewHand extends Component {
     bidder: '',
     bid: '',
     trump: '',
-    players: [{name: 'Norman', id: 3}, {name: 'Ted', id: 1}, {name: 'Hazel', id: 2}]
   }
 
   handleChange = (e) => {
@@ -18,7 +20,15 @@ export class NewHand extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault()
+    let game_id = this.props.match.params.id
+    let h = this.state
+    let hand = {
+      ...h,
+      game_id: game_id
+    }
+    this.props.postHand(hand)
     console.log(this.state)
+    console.log(this.props.match.params.id)
   }
 
   render() {
@@ -100,4 +110,4 @@ export class NewHand extends Component {
   }
 }
 
-export default NewHand
+export default connect(null, {postHand})(withRouter(NewHand))
