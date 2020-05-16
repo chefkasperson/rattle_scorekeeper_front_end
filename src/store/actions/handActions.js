@@ -1,5 +1,5 @@
 export const addHand = hand => ({type: "ADD_HAND", hand})
-
+const updateGame = (game) => ({type: "UPDATE_GAME", game})
 export const postHand = (hand) => {
   return dispatch => {
     const body = {
@@ -22,6 +22,7 @@ export const postHand = (hand) => {
         let hand = game.hands[game.hands.length - 1]
         console.log(game, hand)
         dispatch(addHand(hand))
+        dispatch(updateGame(game))
         return game
       }
     })

@@ -7,11 +7,13 @@ import Home from './components/home/Home'
 import Dashboard from './components/dashboard/Dashboard'
 import { connect } from 'react-redux'
 import { fetchPlayers } from './store/actions/playerActions'
+import { fetchGames } from './store/actions/gameActions'
 
 class App extends React.Component {
 
   componentDidMount() {
     this.props.fetchPlayers()
+    this.props.fetchGames()
   }
 
   render() {
@@ -32,4 +34,4 @@ class App extends React.Component {
   }
 }
 
-export default connect(null, { fetchPlayers })(App);
+export default connect(null, { fetchPlayers, fetchGames })(App);

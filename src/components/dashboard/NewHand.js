@@ -42,11 +42,11 @@ export class NewHand extends Component {
     let suitOptions = suits.map(function(suit){
       return (<option key={suit} value={suit}>{suit}</option>)
     })
-
+    let game = this.props.game
     return (
       <div className='container white z-depth-3'>
         <form onSubmit={this.handleSubmit} className="white">
-          <h5 className="center grey-text text-darken-3">New Hand</h5>
+          <h5 className="center grey-text text-darken-3">It's {(game && game.dealer.name)}'s Deal</h5>
           <div className="input-field">
             <select 
             name="bid"
@@ -74,9 +74,9 @@ export class NewHand extends Component {
             onChange={this.handleChange}
             >
               <option disabled selected value=''>Bidder</option>
-              <option value='1'>Player 1</option>
-              <option value='2'>Player 2</option>
-              <option value='3'>Player 3</option>
+              <option value='1'>{(game && game.player_1.name)}</option>
+              <option value='2'>{(game && game.player_2.name)}</option>
+              <option value='3'>{(game && game.player_3.name)}</option>
             </select>
           </div>
           <div className="input-field">
@@ -84,7 +84,7 @@ export class NewHand extends Component {
             className='browser-default'
             name='player1'
             onChange={this.handleChange}
-            ><option disabled selected value=''>player 1 score</option>{scoreOptions}</select>
+            ><option disabled selected value=''>{(game && game.player_1.name)}'s score</option>{scoreOptions}</select>
 
           </div>
           <div className="input-field">
@@ -92,14 +92,14 @@ export class NewHand extends Component {
               name='player2'
               className='browser-default'
               onChange={this.handleChange}
-              ><option disabled selected value=''>player 2 score</option>{scoreOptions}</select>
+              ><option disabled selected value=''>{(game && game.player_2.name)}'s score</option>{scoreOptions}</select>
           </div>
           <div className="input-field">
           <select
             name='player3'
             className='browser-default'
             onChange={this.handleChange}
-            ><option disabled selected value=''>player 3 score</option>{scoreOptions}</select>
+            ><option disabled selected value=''>{(game && game.player_3.name)}'s score</option>{scoreOptions}</select>
           </div>
           <div className="input-field">
             <button className="btn indigo lighten-1 z-depth-1">Submit Hand</button>
