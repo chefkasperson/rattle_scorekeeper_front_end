@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { createGame } from '../../store/actions/gameActions'
 import { connect } from 'react-redux'
+import CreatePlayer from './CreatePlayer'
 
 export class NewGame extends Component {
   state = {
@@ -32,54 +33,59 @@ export class NewGame extends Component {
         return (<option key={player.id} value={player.name}>{player.name}</option>)})
     }
     return (
-      <div className='container white z-depth-3'>
-        <form onSubmit={this.handleSubmit} className="white">
-          <h5 className="center grey-text text-darken-3">New Game</h5>
-          <div className="input-field">
-            <select
-            className='browser-default'
-            name='player_1'
-            onChange={this.handleChange}
-            ><option disabled selected value=''>choose player 1</option>{playersList}</select>
+      <>
+        <div className='container white z-depth-3'>
+          <form onSubmit={this.handleSubmit} className="white">
+            <h5 className="center grey-text text-darken-3">New Game</h5>
+            <div className="input-field">
+              <select
+              className='browser-default'
+              name='player_1'
+              onChange={this.handleChange}
+              ><option disabled selected value=''>choose player 1</option>{playersList}</select>
 
-          </div>
-          <div className="input-field">
+            </div>
+            <div className="input-field">
+              <select
+                name='player_2'
+                className='browser-default'
+                onChange={this.handleChange}
+                ><option disabled selected value=''>choose player 2</option>{playersList}</select>
+            </div>
+            <div className="input-field">
             <select
-              name='player_2'
+              name='player_3'
               className='browser-default'
               onChange={this.handleChange}
-              ><option disabled selected value=''>choose player 2</option>{playersList}</select>
-          </div>
-          <div className="input-field">
-          <select
-            name='player_3'
-            className='browser-default'
-            onChange={this.handleChange}
-            ><option disabled selected value=''>choose player 3</option>{playersList}</select>
-          </div>
-          <div className="input-field">
-            <select 
-            name="dealer"
-            className='browser-default'
-            onChange={this.handleChange}
-            >
-              <option disabled selected value=''>Dealer</option>
-              <option value='1'>Player 1</option>
-              <option value='2'>Player 2</option>
-              <option value='3'>Player 3</option>
-            </select>
-          </div>
-          <div className="input-field">
-            <button className="btn indigo lighten-1 z-depth-1">Create</button>
-          </div>
-        </form>
-      </div>
+              ><option disabled selected value=''>choose player 3</option>{playersList}</select>
+            </div>
+            <div className="input-field">
+              <select 
+              name="dealer"
+              className='browser-default'
+              onChange={this.handleChange}
+              >
+                <option disabled selected value=''>Dealer</option>
+                <option value='1'>Player 1</option>
+                <option value='2'>Player 2</option>
+                <option value='3'>Player 3</option>
+              </select>
+            </div>
+            <div className="input-field">
+              <button className="btn indigo lighten-1 z-depth-1">Create</button>
+            </div>
+          </form>
+        </div>
+        <div className="container section">
+          <CreatePlayer />
+        </div>
+      </>  
     )
   }
 }
 const mapStateToProps = (state) => {
   return {
-    players: state.playersReducer.players
+    players: state.playersReducer
   }
 }
 
