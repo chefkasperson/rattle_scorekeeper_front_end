@@ -26,8 +26,11 @@ export class NewGame extends Component {
 
   render() {
     console.log(this.props)
-    let playersList = this.props.players.map(function(player){ 
-      return (<option key={player.id} value={player.name}>{player.name}</option>)})
+    let playersList
+    if (this.props.players){
+      playersList = this.props.players.map(function(player){ 
+        return (<option key={player.id} value={player.name}>{player.name}</option>)})
+    }
     return (
       <div className='container white z-depth-3'>
         <form onSubmit={this.handleSubmit} className="white">
