@@ -39,3 +39,7 @@ td {
 div.scoreboard {
   padding: 20px;
 }
+
+div.container.button {
+  padding: 20px;
+}

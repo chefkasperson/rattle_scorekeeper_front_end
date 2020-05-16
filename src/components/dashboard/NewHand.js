@@ -20,6 +20,7 @@ export class NewHand extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault()
+    let form = e.target
     let game_id = this.props.match.params.id
     let h = this.state
     let hand = {
@@ -27,7 +28,9 @@ export class NewHand extends Component {
       game_id: game_id
     }
     this.props.postHand(hand)
-    console.log(game_id, hand)
+    
+    
+    
     
   }
 
