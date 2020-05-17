@@ -7,7 +7,6 @@ import { createGame } from '../../store/actions/gameActions'
 
 export class Dashboard extends Component {
   handleClick = (game, winner) => {
-    console.log(game, winner)
     let dealer
     if (game.player_1.id == winner.id) {
       dealer = '1'
@@ -24,7 +23,6 @@ export class Dashboard extends Component {
     }
     this.props.createGame(newGame)
       .then(r => {
-        console.log(r)
         this.props.history.push(`/games/${r.id}`)} 
       )
 
@@ -37,7 +35,6 @@ export class Dashboard extends Component {
     if (game && game.status === "incomplete" ){
       gameCheck = <NewHand game={game} />
     } else if (game && players && game.status === 'finished') {
-       console.log(players)
       let winner = players.find((player) => player.id == game.winner_id)
       gameCheck = <WonGame game={game} winner={winner} handleClick={() => this.handleClick(game,winner)} />
     }
@@ -59,7 +56,6 @@ export class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state)
   return {
     games: state.gamesReducer,
     players: state.playersReducer

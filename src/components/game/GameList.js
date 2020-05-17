@@ -6,7 +6,7 @@ const GameList = (props) => {
   let games = props.games
 
   let renderGames
-  if (games) {
+  if (games.length > 0) {
     renderGames =  games.map(game => (
       <li key={game.id}><Link to={`/games/${game.id}`} >
         {game.player_1.name}  {game.p1_score} -- {game.player_2.name}  {game.p2_score} -- {game.player_3.name}  {game.p3_score}

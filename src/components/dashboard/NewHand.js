@@ -12,7 +12,17 @@ export class NewHand extends Component {
     bid: '',
     trump: '',
   }
-
+  
+  resetState = () => {
+    this.setState({
+      player1: '',
+      player2: '',
+      player3: '',
+      bidder: '',
+      bid: '',
+      trump: '',
+    })
+  }
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
@@ -20,12 +30,15 @@ export class NewHand extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault()
+    let form = e.target
     let game_id = this.props.match.params.id
     let h = this.state
     let hand = {
       ...h,
       game_id: game_id
     }
+    form.reset()
+    this.resetState()
     this.props.postHand(hand)
     
     
@@ -55,7 +68,7 @@ export class NewHand extends Component {
             className='browser-default'
             onChange={this.handleChange}
             >
-              <option disabled selected value=''>Bid</option>
+              <option value=''>Bid</option>
               {bidOptions}
             </select>
           </div>
@@ -65,7 +78,7 @@ export class NewHand extends Component {
             className='browser-default'
             onChange={this.handleChange}
             >
-              <option disabled selected value=''>Trump</option>
+              <option value=''>Trump</option>
               {suitOptions}
             </select>
           </div>
@@ -75,7 +88,7 @@ export class NewHand extends Component {
             className='browser-default'
             onChange={this.handleChange}
             >
-              <option disabled selected value=''>Bidder</option>
+              <option value=''>Bidder</option>
               <option value='1'>{(game && game.player_1.name)}</option>
               <option value='2'>{(game && game.player_2.name)}</option>
               <option value='3'>{(game && game.player_3.name)}</option>
@@ -86,7 +99,7 @@ export class NewHand extends Component {
             className='browser-default'
             name='player1'
             onChange={this.handleChange}
-            ><option disabled selected value=''>{(game && game.player_1.name)}'s score</option>{scoreOptions}</select>
+            ><option value=''>{(game && game.player_1.name)}'s score</option>{scoreOptions}</select>
 
           </div>
           <div className="input-field">
@@ -94,14 +107,14 @@ export class NewHand extends Component {
               name='player2'
               className='browser-default'
               onChange={this.handleChange}
-              ><option disabled selected value=''>{(game && game.player_2.name)}'s score</option>{scoreOptions}</select>
+              ><option value=''>{(game && game.player_2.name)}'s score</option>{scoreOptions}</select>
           </div>
           <div className="input-field">
           <select
             name='player3'
             className='browser-default'
             onChange={this.handleChange}
-            ><option disabled selected value=''>{(game && game.player_3.name)}'s score</option>{scoreOptions}</select>
+            ><option value=''>{(game && game.player_3.name)}'s score</option>{scoreOptions}</select>
           </div>
           <div className="input-field">
             <button className="btn indigo lighten-1 z-depth-1">Submit Hand</button>

@@ -5,7 +5,6 @@ export const fetchPlayers = () => {
     return fetch("http://localhost:3003/api/v1/players")
       .then(r => r.json())
       .then(playerJSON => {
-        console.log(playerJSON)
         if (playerJSON.error) {
           alert(playerJSON.error)
         } else {
@@ -33,7 +32,6 @@ export const createPlayer = (player) => {
       if (newPlayer.error) {
         alert(newPlayer.error)
       } else {
-        console.log(newPlayer)
         dispatch(addPlayer(newPlayer))
         return newPlayer
       }

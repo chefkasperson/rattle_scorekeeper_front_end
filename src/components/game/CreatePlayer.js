@@ -16,7 +16,6 @@ export class CreatePlayer extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     let player = this.state
-    console.log( this.state)
     this.props.createPlayer(player)
     this.setState({
       name: ''

@@ -6,7 +6,6 @@ export const fetchGames = () => {
     return fetch("http://localhost:3003/api/v1/games")
       .then(r => r.json())
       .then(gamesJSON => {
-        console.log(gamesJSON)
         if (gamesJSON.error) {
           alert(gamesJSON.error)
         } else {
@@ -33,7 +32,6 @@ export const createGame = (game) => {
       if (newGame.error) {
         alert(newGame.error)
       } else {
-        console.log(newGame)
         dispatch(addGame(newGame))
         return newGame
       }

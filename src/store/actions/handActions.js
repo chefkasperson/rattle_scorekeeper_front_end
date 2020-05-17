@@ -16,11 +16,9 @@ export const postHand = (hand) => {
     .then(r => r.json())
     .then(game => {
       if (game.error) {
-        console.log(game)
         alert("Sorry the data entered for this hand is invalid")
       } else {
         let hand = game.hands[game.hands.length - 1]
-        console.log(game, hand)
         dispatch(addHand(hand))
         dispatch(updateGame(game))
         return game

@@ -3,10 +3,8 @@ import GameList from '../game/GameList'
 import { connect } from 'react-redux'
 
 const Home = (props) => {
-  console.log(props)
   let finishedGames = props.games.filter((game) => (game.status === 'finished'))
   let incompleteGames = props.games.filter((game) => (game.status === 'incomplete'))
-  console.log(finishedGames, incompleteGames)
   return (
     <div className='home'>
       <div className="container section">

@@ -5,9 +5,9 @@ import CreatePlayer from './CreatePlayer'
 
 export class NewGame extends Component {
   state = {
-    player_1: '',
-    player_2: '',
-    player_3: '',
+    player_1: 'Player 1',
+    player_2: 'Player 2',
+    player_3: 'Player 3',
     dealer: '1',
   }
 
@@ -21,7 +21,6 @@ export class NewGame extends Component {
     e.preventDefault()
     this.props.createGame(game, this.props.history)
       .then(r => {
-        console.log(r)
         if (r) {
           this.props.history.push(`/games/${r.id}`)
         }
@@ -29,7 +28,6 @@ export class NewGame extends Component {
   }
 
   render() {
-    console.log(this.props)
     let playersList
     if (this.props.players){
       playersList = this.props.players.map(function(player){ 
@@ -69,9 +67,9 @@ export class NewGame extends Component {
               onChange={this.handleChange}
               >
                 <option disabled selected value=''>Dealer</option>
-                <option value='1'>Player 1</option>
-                <option value='2'>Player 2</option>
-                <option value='3'>Player 3</option>
+                <option value='1'>{this.state.player_1}</option>
+                <option value='2'>{this.state.player_2}</option>
+                <option value='3'>{this.state.player_3}</option>
               </select>
             </div>
             <div className="input-field">

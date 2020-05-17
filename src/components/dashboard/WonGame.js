@@ -2,7 +2,6 @@ import React from 'react'
 
 
 function WonGame(props) {
-  console.log(props)
   return (
     <div className="container section">
       <div className="card z-depth-3">
