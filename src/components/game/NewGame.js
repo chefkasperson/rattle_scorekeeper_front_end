@@ -43,7 +43,7 @@ export class NewGame extends Component {
               className='browser-default'
               name='player_1'
               onChange={this.handleChange}
-              ><option disabled selected value=''>choose player 1</option>{playersList}</select>
+              ><option value=''>choose player 1</option>{playersList}</select>
 
             </div>
             <div className="input-field">
@@ -51,14 +51,14 @@ export class NewGame extends Component {
                 name='player_2'
                 className='browser-default'
                 onChange={this.handleChange}
-                ><option disabled selected value=''>choose player 2</option>{playersList}</select>
+                ><option value=''>choose player 2</option>{playersList}</select>
             </div>
             <div className="input-field">
             <select
               name='player_3'
               className='browser-default'
               onChange={this.handleChange}
-              ><option disabled selected value=''>choose player 3</option>{playersList}</select>
+              ><option value=''>choose player 3</option>{playersList}</select>
             </div>
             <div className="input-field">
               <select 
@@ -66,7 +66,7 @@ export class NewGame extends Component {
               className='browser-default'
               onChange={this.handleChange}
               >
-                <option disabled selected value=''>Dealer</option>
+                <option value=''>Dealer</option>
                 <option value='1'>{this.state.player_1}</option>
                 <option value='2'>{this.state.player_2}</option>
                 <option value='3'>{this.state.player_3}</option>
