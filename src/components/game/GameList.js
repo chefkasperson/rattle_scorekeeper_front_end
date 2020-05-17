@@ -5,12 +5,16 @@ const GameList = (props) => {
 
   let games = props.games
 
-  let renderGames = games.map(game => (
-    <li><Link to={`/games/${game.id}`} >
-      {game.player_1.name}  {game.p1_score} -- {game.player_2.name}  {game.p2_score} -- {game.player_3.name}  {game.p3_score}
-      </Link></li>
-  ))
-
+  let renderGames
+  if (games) {
+    renderGames =  games.map(game => (
+      <li key={game.id}><Link to={`/games/${game.id}`} >
+        {game.player_1.name}  {game.p1_score} -- {game.player_2.name}  {game.p2_score} -- {game.player_3.name}  {game.p3_score}
+        </Link></li>
+    ))
+  } else {
+    renderGames = <h5 className='center'>none</h5>
+  }
 
   return (
     <div className='GameList'>

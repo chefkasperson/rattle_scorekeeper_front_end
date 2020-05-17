@@ -10,7 +10,7 @@ export default (state = [], action) => {
       let idx = state.findIndex((game) => game.id == action.game.id)
       return [...state.slice(0, idx),
         action.game,
-        ...state.slice(idx)]
+        ...state.slice(idx + 1)]
     default:
       return state
   }
