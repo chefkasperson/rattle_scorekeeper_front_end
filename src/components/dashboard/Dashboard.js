@@ -8,9 +8,9 @@ import { createGame } from '../../store/actions/gameActions'
 export class Dashboard extends Component {
   handleClick = (game, winner) => {
     let dealer
-    if (game.player_1.id == winner.id) {
+    if (game.player_1.id === parseInt(winner.id)) {
       dealer = '1'
-    } else if (game.player_2.id == winner.id) {
+    } else if (game.player_2.id === parseInt(winner.id)) {
       dealer = '2'
     } else {
       dealer = '3'
@@ -29,13 +29,13 @@ export class Dashboard extends Component {
   }
   render() {
     const id = (this.props.match.params.id)
-    const game = this.props.games.find((game) => (game.id == id))
+    const game = this.props.games.find((game) => (game.id === parseInt(id)))
     const players = this.props.players
     let gameCheck 
     if (game && game.status === "incomplete" ){
       gameCheck = <NewHand game={game} />
     } else if (game && players && game.status === 'finished') {
-      let winner = players.find((player) => player.id == game.winner_id)
+      let winner = players.find((player) => player.id === parseInt(game.winner_id))
       gameCheck = <WonGame game={game} winner={winner} handleClick={() => this.handleClick(game,winner)} />
     }
       
