@@ -1,15 +1,38 @@
 import React from 'react'
-import CurrentGames from '../game/CurrentGames'
+import GameList from '../game/GameList'
+import { connect } from 'react-redux'
 
-const Home = () => {
-  let games = [{p1: 'Norman', p2: 'Ted', p3: 'Hazel', dealer: 'Hazel', id: '1', p1_score: '24', p2_score: '18', p3_score: '11'}]
-
+const Home = (props) => {
+  console.log(props)
+  let finishedGames = props.games.filter((game) => (game.status === 'finished'))
+  let incompleteGames = props.games.filter((game) => (game.status === 'incomplete'))
+  console.log(finishedGames, incompleteGames)
   return (
-    <div className='container section'>
-      <h5 className='card-content white center z-depth-3'>Current Games</h5>
-      <CurrentGames games={games} />
+    <div className='home'>
+      <div className="container section">
+        <div className="card z-depth-3">
+          <div className="card-content">
+            <h5 className="center grey-text text-darken-3">Unfinished Games </h5>
+            <GameList games={incompleteGames} />
+          </div>
+        </div>
+      </div>
+      <div className="container section">
+        <div className="card z-depth-3">
+          <div className="card-content">
+            <h5 className="center grey-text text-darken-3">Finished Games </h5>
+            <GameList games={finishedGames} />
+          </div>
+        </div>
+      </div>
     </div>
+
   )
 }
+const mapStateToProps = (state) => {
+  return {
+    games: state.gamesReducer
+  }
+}
 
-export default Home
+export default connect(mapStateToProps)(Home)

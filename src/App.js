@@ -27,7 +27,6 @@ class App extends React.Component {
             <Route path='/about' component={About} />
             <Route path='/games/:id' component={Dashboard} />
           </Switch>
-          <h1 className="container grey-text">Hello World</h1>
         </div>
       </BrowserRouter>
     );

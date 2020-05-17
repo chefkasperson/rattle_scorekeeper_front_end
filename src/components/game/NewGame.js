@@ -22,7 +22,10 @@ export class NewGame extends Component {
     this.props.createGame(game, this.props.history)
       .then(r => {
         console.log(r)
-        this.props.history.push(`/games/${r.id}`)} )
+        if (r) {
+          this.props.history.push(`/games/${r.id}`)
+        }
+      })
   }
 
   render() {

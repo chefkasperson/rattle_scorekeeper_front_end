@@ -37,8 +37,8 @@ export class Dashboard extends Component {
     if (game && game.status === "incomplete" ){
       gameCheck = <NewHand game={game} />
     } else if (game && players && game.status === 'finished') {
-       console.log(players.players)
-      let winner = players.players.find((player) => player.id == game.winner_id)
+       console.log(players)
+      let winner = players.find((player) => player.id == game.winner_id)
       gameCheck = <WonGame game={game} winner={winner} handleClick={() => this.handleClick(game,winner)} />
     }
       

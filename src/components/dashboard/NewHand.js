@@ -20,7 +20,6 @@ export class NewHand extends Component {
   }
   handleSubmit = (e) => {
     e.preventDefault()
-    let form = e.target
     let game_id = this.props.match.params.id
     let h = this.state
     let hand = {
