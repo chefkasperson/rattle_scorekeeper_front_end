@@ -1,5 +1,5 @@
 # README
-# Welcome to Baby's First Words
+# Welcome to Rattle Scorekeeper
 Rattle Scorekeeper is an open source single page web-application intended to allow users to keep score of their rattle games. The application is divided into to parts, a Rails-api back-end (found here https://github.com/chefkasperson/rattle_scorekeeper_api), and a React and Redux front-end (found here https://github.com/chefkasperson/rattle_scorekeeper_front_end). 
 
 # tech
